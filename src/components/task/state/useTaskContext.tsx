@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 
-import { Task, TaskText } from '../../../core/modules/task/domain/model/Task';
+import { Task } from '../../../core/modules/task/domain/model/Task';
 import { getTaskActionDispatchers } from './taskActions';
 import { TaskContext } from '../TaskContextProvider';
 
 interface TaskContextProps {
   tasks: Task[];
-  createTask(taskText: TaskText): void;
+  createTask(taskText: string): void;
   deleteTask(task: Task): void;
   updateTasks(): void;
 }

@@ -1,4 +1,4 @@
-import { Task, TaskText } from '../../../core/modules/task/domain/model/Task';
+import { Task } from '../../../core/modules/task/domain/model/Task';
 import { TaskStateRepository } from '../../../core/modules/task/infrastructure/task/TaskStateRepository';
 import { CreateTaskUseCase } from '../../../core/modules/task/useCases/task/CreateTaskUseCase';
 import { RemoveTaskUseCase } from '../../../core/modules/task/useCases/task/RemoveTaskUseCase';
@@ -33,7 +33,7 @@ export function getTaskActionDispatchers(dispatch: Function) {
   });
 
   return {
-    createTask: (taskText: TaskText): void =>
+    createTask: (taskText: string): void =>
       CreateTaskUseCase.create({
         taskDeliveryStateRepository,
       }).execute(taskText),

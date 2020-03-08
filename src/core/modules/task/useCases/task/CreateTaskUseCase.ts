@@ -9,6 +9,7 @@ export interface CreateTaskUseCaseProps {
 
 export class CreateTaskUseCase extends UseCase<CreateTaskUseCaseProps> {
   private taskPersistenceRepository: TaskPersistenceRepository;
+  
   private constructor(CreateTaskUseCaseProps: CreateTaskUseCaseProps) {
     super(CreateTaskUseCaseProps);
 

@@ -15,7 +15,7 @@ export const TaskItem: FC<TaskItemProps> = props => {
 
   return (
     <div className="ToDoItem">
-      <p className="ToDoItem-Text">{task.text}</p>
+      <p className="ToDoItem-Text">{task.text.value}</p>
       <button className="ToDoItem-Delete" onClick={() => deleteTask(task)}>
         -
       </button>
