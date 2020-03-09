@@ -15,7 +15,7 @@ export class TaskText extends ValueObject<ITaskTextProps> {
     super(props);
   }
 
-  private static isAppropriateLength(text: string): boolean {
+  public static isAppropriateLength(text: string): boolean {
     return text.length >= this.minLength;
   }
 

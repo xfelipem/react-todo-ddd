@@ -1,19 +1,32 @@
 import React, { FC, useState } from 'react';
 
 import { useTaskContext } from './state/useTaskContext';
+import { TaskText } from '../../core/modules/task/domain/model/TaskText';
 
 export const CreateTaskInput: FC = () => {
   const { createTask } = useTaskContext();
-  const [text, setText] = useState('');
+  const [text, setText] = useState<string>('');
+  const [isValid, setIsValid] = useState<boolean>(false);
 
   const createTaskFromInput = () => {
-    createTask(text);
-    setText('');
+    if (isValid) {
+      createTask(text);
+      setText('');
+    }
   };
 
   const handleInput = (e: any) => {
-    setText(e.target.value);
+    const inputText = e.target.value;
+
+    if (TaskText.isAppropriateLength(inputText)) {
+      setText(inputText);
+      setIsValid(true);
+      return;
+    }
+
+    setIsValid(false);
   };
+
   const handleKeyPress = (e: any) => {
     if (e.key === 'Enter') {
       createTaskFromInput();
@@ -27,6 +40,7 @@ export const CreateTaskInput: FC = () => {
         value={text}
         onChange={handleInput}
         onKeyPress={handleKeyPress}
+        style={isValid ? {} : { border: '1px solid red' }}
       />
       <button className="ToDo-Add" onClick={() => createTaskFromInput()}>
         +

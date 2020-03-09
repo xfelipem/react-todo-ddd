@@ -18,7 +18,7 @@ export class TaskPersistenceRepository {
 
   public remove(task: Task): void {
     this.taskCollection = this.taskCollection.filter(
-      (storedTask: Task) => storedTask.id !== task.id
+      (storedTask: Task) => !storedTask.id.equals(task.id)
     );
   }
 
