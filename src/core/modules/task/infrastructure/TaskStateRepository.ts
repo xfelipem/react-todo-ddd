@@ -1,5 +1,5 @@
-import { Task } from '../../domain/model/Task';
-import { Repository } from '../../../../shared/infrastructure/Repository';
+import { Task } from '../domain/Task';
+import { Repository } from '../../../shared/infrastructure/Repository';
 
 export interface StateRepositoryProps {
   dispatchAdd: Function;

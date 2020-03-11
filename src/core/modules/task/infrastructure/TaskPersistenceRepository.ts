@@ -1,4 +1,4 @@
-import { Task } from '../../domain/model/Task';
+import { Task } from '../domain/Task';
 
 export class TaskPersistenceRepository {
   private tasks: Task[] = [];

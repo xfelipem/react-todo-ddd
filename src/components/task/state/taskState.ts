@@ -1,4 +1,4 @@
-import { Task } from '../../../core/modules/task/domain/model/Task';
+import { Task } from '../../../core/modules/task/domain/Task';
 import { ADD_ACTION_TYPE, REMOVE_ACTION_TYPE, StateAction, UPDATE_ACTION_TYPE } from './taskActions';
 
 export interface TaskState {

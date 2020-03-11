@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Task } from '../../core/modules/task/domain/model/Task';
+import { Task } from '../../core/modules/task/domain/Task';
 import { useTaskContext } from './state/useTaskContext';
 import { TaskItem } from './TaskItem';
 

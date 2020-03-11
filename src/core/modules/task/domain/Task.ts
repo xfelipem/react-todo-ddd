@@ -1,5 +1,5 @@
-import { AggregateRoot } from '../../../../shared/domain/AggregateRoot';
-import { UniqueEntityID } from '../../../../shared/domain/UniqueEntityID';
+import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
 import { TaskText } from './TaskText';
 
 export type TaskId = number;

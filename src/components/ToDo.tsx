@@ -3,7 +3,7 @@ import './ToDo.css';
 import React from 'react';
 
 import Logo from '../assets/logo.png';
-import { CreateTaskInput } from './task/CreateTaskInput';
+import { CreateTaskInput } from './task/CreateTaskForm';
 import { TaskContextProvider } from './task/TaskContextProvider';
 import { TaskList } from './task/TaskList';
 

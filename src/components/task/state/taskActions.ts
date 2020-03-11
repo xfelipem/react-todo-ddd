@@ -1,8 +1,8 @@
-import { Task } from '../../../core/modules/task/domain/model/Task';
-import { TaskStateRepository } from '../../../core/modules/task/infrastructure/task/TaskStateRepository';
-import { CreateTaskUseCase } from '../../../core/modules/task/useCases/task/CreateTaskUseCase';
-import { RemoveTaskUseCase } from '../../../core/modules/task/useCases/task/RemoveTaskUseCase';
-import { UpdateTasksUseCase } from '../../../core/modules/task/useCases/task/UpdateTasksUseCase';
+import { Task } from '../../../core/modules/task/domain/Task';
+import { TaskStateRepository } from '../../../core/modules/task/infrastructure/TaskStateRepository';
+import { CreateTaskUseCase } from '../../../core/modules/task/useCases/CreateTaskUseCase';
+import { RemoveTaskUseCase } from '../../../core/modules/task/useCases/RemoveTaskUseCase';
+import { UpdateTasksUseCase } from '../../../core/modules/task/useCases/UpdateTasksUseCase';
 
 export interface StateAction {
   payload: any;

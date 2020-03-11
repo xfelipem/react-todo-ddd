@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 
 import { useTaskContext } from './state/useTaskContext';
-import { TaskText } from '../../core/modules/task/domain/model/TaskText';
+import { TaskText } from '../../core/modules/task/domain/TaskText';
 
 export const CreateTaskInput: FC = () => {
   const { createTask } = useTaskContext();

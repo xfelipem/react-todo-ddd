@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { Task } from '../../../core/modules/task/domain/model/Task';
+import { Task } from '../../../core/modules/task/domain/Task';
 import { getTaskActionDispatchers } from './taskActions';
 import { TaskContext } from '../TaskContextProvider';
 

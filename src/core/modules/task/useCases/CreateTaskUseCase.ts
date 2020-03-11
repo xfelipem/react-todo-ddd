@@ -1,7 +1,7 @@
-import { UseCase } from '../../../../shared/domain/UseCase';
-import { Task } from '../../domain/model/Task';
-import { TaskPersistenceRepository } from '../../infrastructure/task/TaskPersistenceRepository';
-import { TaskStateRepository } from '../../infrastructure/task/TaskStateRepository';
+import { UseCase } from '../../../shared/domain/UseCase';
+import { Task } from '../domain/Task';
+import { TaskPersistenceRepository } from '../infrastructure/TaskPersistenceRepository';
+import { TaskStateRepository } from '../infrastructure/TaskStateRepository';
 
 export interface CreateTaskUseCaseProps {
   taskDeliveryStateRepository: TaskStateRepository;
