@@ -15,7 +15,11 @@ export class UpdateTasksUseCase extends UseCase<UpdateTasksUseCaseProps> {
   public execute() {
     this.props.taskPersistenceRepository
       .get()
-      .then(tasks => this.props.taskDeliveryStateRepository.update(tasks));
+      .then(tasks =>
+        this.props.taskDeliveryStateRepository.update(
+          Array.isArray(tasks) ? tasks : [tasks]
+        )
+      );
   }
 
   static create(props: UpdateTasksUseCaseProps) {
