@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react';
 
 import { useTaskContext } from './state/useTaskContext';
-import { TaskText } from '../../core/modules/task/domain/TaskText';
 
 export const CreateTaskInput: FC = () => {
   const { createTask } = useTaskContext();
@@ -18,7 +17,7 @@ export const CreateTaskInput: FC = () => {
   const handleInput = (e: any) => {
     const inputText = e.target.value;
 
-    if (TaskText.isAppropriateLength(inputText)) {
+    if (inputText.length >= 1) {
       setText(inputText);
       setIsValid(true);
       return;

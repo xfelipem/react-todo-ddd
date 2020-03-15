@@ -21,8 +21,7 @@ export class Task extends AggregateRoot<TaskProps> {
     this.props.text = newText;
   }
 
-  static create(taskText: string) {
-    const text = TaskText.create({ value: taskText });
-    return new Task({ text }, new UniqueEntityID());
+  static create(props: TaskProps) {
+    return new Task(props, new UniqueEntityID());
   }
 }
