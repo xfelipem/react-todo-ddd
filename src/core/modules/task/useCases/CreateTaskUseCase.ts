@@ -1,27 +1,25 @@
 import { UseCase } from '../../../shared/domain/UseCase';
 import { Task } from '../domain/Task';
-import { TaskPersistenceRepository } from '../infrastructure/TaskPersistenceRepository';
-import { TaskStateRepository } from '../infrastructure/TaskStateRepository';
 import { TaskText } from '../domain/TaskText';
+import { PersistenceRepository } from '../infrastructure/interfaces/PersistenceRepository';
+import { StateRepository } from '../infrastructure/interfaces/StateRepository';
 
 export interface CreateTaskUseCaseProps {
-  taskDeliveryStateRepository: TaskStateRepository;
+  taskDeliveryStateRepository: StateRepository ;
+  taskPersistenceRepository: PersistenceRepository;
 }
 
 export class CreateTaskUseCase extends UseCase<CreateTaskUseCaseProps> {
-  private taskPersistenceRepository: TaskPersistenceRepository;
 
-  private constructor(CreateTaskUseCaseProps: CreateTaskUseCaseProps) {
-    super(CreateTaskUseCaseProps);
-
-    this.taskPersistenceRepository = TaskPersistenceRepository.create();
+  private constructor(createTaskUseCaseProps: CreateTaskUseCaseProps) {
+    super(createTaskUseCaseProps);
   }
 
   public execute(text: string) {
     const taskText = TaskText.create({ value: text });
     const newTask = Task.create({ text: taskText });
 
-    this.taskPersistenceRepository.add(newTask);
+    this.props.taskPersistenceRepository.add(newTask);
     this.props.taskDeliveryStateRepository.add(newTask);
   }
 

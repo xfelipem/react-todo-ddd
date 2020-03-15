@@ -1,5 +1,6 @@
 import { Task } from '../domain/Task';
 import { Repository } from '../../../shared/infrastructure/Repository';
+import { StateRepository } from './interfaces/StateRepository';
 
 export interface StateRepositoryProps {
   dispatchAdd: Function;
@@ -7,8 +8,9 @@ export interface StateRepositoryProps {
   dispatchUpdate: Function;
 }
 
-export class TaskStateRepository extends Repository<StateRepositoryProps> {
-  private constructor(props: StateRepositoryProps) {
+export class TaskStateRepository extends Repository<StateRepositoryProps>
+  implements StateRepository {
+  public constructor(props: StateRepositoryProps) {
     super(props);
   }
 
@@ -22,9 +24,5 @@ export class TaskStateRepository extends Repository<StateRepositoryProps> {
 
   public update(tasks: Task[]): void {
     this.props.dispatchUpdate(tasks);
-  }
-
-  static create(props: StateRepositoryProps) {
-    return new TaskStateRepository(props);
   }
 }

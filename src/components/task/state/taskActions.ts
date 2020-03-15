@@ -3,6 +3,7 @@ import { TaskStateRepository } from '../../../core/modules/task/infrastructure/T
 import { CreateTaskUseCase } from '../../../core/modules/task/useCases/CreateTaskUseCase';
 import { RemoveTaskUseCase } from '../../../core/modules/task/useCases/RemoveTaskUseCase';
 import { UpdateTasksUseCase } from '../../../core/modules/task/useCases/UpdateTasksUseCase';
+import { TaskInMemoryRepository } from '../../../core/modules/task/infrastructure/TaskPersistenceRepository';
 
 export interface StateAction {
   payload: any;
@@ -26,24 +27,28 @@ function dispatchUpdateTasks(dispatch: Function, tasks: Task[]): void {
 }
 
 export function getTaskActionDispatchers(dispatch: Function) {
-  const taskDeliveryStateRepository = TaskStateRepository.create({
+  const taskDeliveryStateRepository = new TaskStateRepository({
     dispatchAdd: (task: Task) => dispatchAddTask(dispatch, task),
     dispatchRemove: (task: Task) => dispatchRemoveTask(dispatch, task),
     dispatchUpdate: (tasks: Task[]) => dispatchUpdateTasks(dispatch, tasks),
   });
+  const taskPersistenceRepository = new TaskInMemoryRepository();
 
   return {
     createTask: (taskText: string): void =>
       CreateTaskUseCase.create({
         taskDeliveryStateRepository,
+        taskPersistenceRepository,
       }).execute(taskText),
     deleteTask: (task: Task) =>
       RemoveTaskUseCase.create({
         taskDeliveryStateRepository,
+        taskPersistenceRepository,
       }).execute(task),
     updateTasks: () =>
       UpdateTasksUseCase.create({
         taskDeliveryStateRepository,
+        taskPersistenceRepository,
       }).execute(),
   };
 }

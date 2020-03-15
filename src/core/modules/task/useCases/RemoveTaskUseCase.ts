@@ -1,22 +1,20 @@
 import { UseCase } from '../../../shared/domain/UseCase';
 import { Task } from '../domain/Task';
-import { TaskPersistenceRepository } from '../infrastructure/TaskPersistenceRepository';
-import { TaskStateRepository } from '../infrastructure/TaskStateRepository';
+import { PersistenceRepository } from '../infrastructure/interfaces/PersistenceRepository';
+import { StateRepository } from '../infrastructure/interfaces/StateRepository';
 
 export interface RemoveTaskUseCaseProps {
-  taskDeliveryStateRepository: TaskStateRepository;
+  taskDeliveryStateRepository: StateRepository;
+  taskPersistenceRepository: PersistenceRepository;
 }
 
 export class RemoveTaskUseCase extends UseCase<RemoveTaskUseCaseProps> {
-  private taskPersistenceRepository: TaskPersistenceRepository;
   private constructor(CreateTaskUseCaseProps: RemoveTaskUseCaseProps) {
     super(CreateTaskUseCaseProps);
-
-    this.taskPersistenceRepository = TaskPersistenceRepository.create();
   }
 
   public execute(task: Task) {
-    this.taskPersistenceRepository.remove(task);
+    this.props.taskPersistenceRepository.remove(task);
     this.props.taskDeliveryStateRepository.remove(task);
   }
 
